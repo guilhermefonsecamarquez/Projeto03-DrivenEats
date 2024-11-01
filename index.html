@@ -29,7 +29,7 @@
           <h2>Primeiro, seu prato</h2>
         </div>
         <div class="cards">
-          <button>
+          <button onclick="checkPrato(this)">
             <div class="card">
               <div class="check">
                 <ion-icon name="checkmark-circle"></ion-icon>
@@ -268,8 +268,10 @@
   </main>
 
   <footer>
+    <button class="finalizarPedido">Selecione os 3 itens para fechar o pedido</button>
   </footer>
   
+  <script src="script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
