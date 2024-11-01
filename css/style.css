@@ -76,38 +76,6 @@ footer {
   margin-left: 21px;
 }
 
-.finalizarPedido {
-  padding: 0px 80px;
-  width: 364px;
-  height: 61px;
-  border-radius: 50px;
-  background-color: #CBCBCB;
-  font-family: "Roboto";
-  font-size: 20px;
-  line-height: 23.44px;
-  text-align: Center;
-  color: #FFFFFF;
-}
-
-.pedidoCompleto {
-  background-color: #32B72F;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .cards {
   display: flex;
   overflow-x: scroll;
@@ -161,4 +129,21 @@ footer {
 
 .aparecer {
   display: initial;
+}
+
+.finalizarPedido {
+  padding: 0px 80px;
+  width: 364px;
+  height: 61px;
+  border-radius: 50px;
+  background-color: #CBCBCB;
+  font-family: "Roboto";
+  font-size: 20px;
+  line-height: 23.44px;
+  text-align: Center;
+  color: #FFFFFF;
+}
+
+.pedidoCompleto {
+  background-color: #32B72F;
 }
