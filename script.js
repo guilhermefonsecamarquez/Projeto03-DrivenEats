@@ -19,6 +19,7 @@ function botaoSelecionado(botaoPedido) {
 function conferirPedidoCompleto() {
   if (nomePrato && nomeBebida && nomeSobremesa) {
     const finalizarPedido = document.querySelector('.finalizarPedido');
+    finalizarPedido.removeAttribute('disabled');
     finalizarPedido.classList.add('pedidoCompleto');
     finalizarPedido.innerHTML = "Fechar pedido"
   }
@@ -30,7 +31,7 @@ function checkPrato(prato) {
 
   nomePrato = prato.querySelector(".nomePrato h3").innerHTML;
   valorPrato = prato.querySelector(".preco").innerHTML;
-  valorPrato = Number(valorPrato.replace('R$ ', '').replace(',', '.')).toFixed(2);
+  valorPrato = Number(Number(valorPrato.replace('R$ ', '').replace(',', '.')).toFixed(2));
   conferirPedidoCompleto()
 }
 
@@ -40,7 +41,7 @@ function checkBebida(bebida) {
 
   nomeBebida = bebida.querySelector(".nomeBebida h3").innerHTML;
   valorBebida = bebida.querySelector(".preco").innerHTML;
-  valorBebida = Number(valorBebida.replace('R$ ', '').replace(',', '.')).toFixed(2);
+  valorBebida = Number(Number(valorBebida.replace('R$ ', '').replace(',', '.')).toFixed(2));
   conferirPedidoCompleto()
 }
 
@@ -50,12 +51,16 @@ function checkSobremesa(sobremesa) {
 
   nomeSobremesa = sobremesa.querySelector(".nomeSobremesa h3").innerHTML;
   valorSobremesa = sobremesa.querySelector(".preco").innerHTML;
-  valorSobremesa = Number(valorSobremesa.replace('R$ ', '').replace(',', '.')).toFixed(2);
+  valorSobremesa = Number(Number(valorSobremesa.replace('R$ ', '').replace(',', '.')).toFixed(2));
   conferirPedidoCompleto()
 }
 
 function pedidoCompleto(pedido) {
   if (nomePrato && nomeBebida && nomeSobremesa) {
-    pedido.classList.add('aaa')
+    let total = valorPrato + valorBebida + valorSobremesa;
+    let mensagem = `Olá, gostaria de fazer o pedido:\n- Prato: ${nomePrato}\n- Bebida: ${nomeBebida}\n- Sobremesa: ${nomeSobremesa}\nTotal: R$ ${total.toFixed(2)}`;
+    let linkWhatsApp = `https://wa.me/5531999999999?text=${encodeURIComponent(mensagem)}`;
+
+    window.location.href = linkWhatsApp;
   }
 }
