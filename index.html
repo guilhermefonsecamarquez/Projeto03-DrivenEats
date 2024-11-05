@@ -36,8 +36,8 @@
         </li>
       </ul>
       <div class="botaoFinal">
-        <button class="confirmar"><strong>Tudo certo, pode pedir!</strong></button>
-        <button class="cancelar">Cancelar</button>
+        <button onclick="finalizarPedido()" class="confirmar"><strong>Tudo certo, pode pedir!</strong></button>
+        <button onclick="cancelarPedido()" class="cancelar">Cancelar</button>
       </div>
 
     </div>
@@ -298,7 +298,7 @@
   </main>
 
   <footer>
-    <button onclick="pedidoCompleto(this)" class="finalizarPedido" disabled >
+    <button onclick="pedidoCompleto()" class="finalizarPedido" disabled >
       Selecione os 3 itens para fechar o pedido
     </button>
   </footer>

@@ -1,5 +1,7 @@
 let nomePrato, nomeBebida, nomeSobremesa;
 let valorPrato, valorBebida, valorSobremesa;
+let total = 0;
+let overlay = document.querySelector('.overlay');
 
 function botaoSelecionadoAnteriormente(pedido) {
   const cardAnterior = document.querySelector(`${pedido} .checkCard`);
@@ -24,6 +26,26 @@ function conferirPedidoCompleto() {
     finalizarPedido.innerHTML = "Fechar pedido"
   }
 }
+
+function aparecerOverlay() {
+  overlay.classList.toggle('escondido')
+}
+
+function valoresOverlay() {
+  overlay.querySelector('.prato .nomePrato').innerHTML = nomePrato;
+  overlay.querySelector('.bebida .nomeBebida').innerHTML = nomeBebida;
+  overlay.querySelector('.sobremesa .nomeSobremesa').innerHTML = nomeSobremesa;
+  overlay.querySelector('.total .nomeTotal').innerHTML = "TOTAL";
+
+  overlay.querySelector('.prato .precoPrato').innerHTML = valorPrato.toFixed(2).replace('.', ',');
+  overlay.querySelector('.bebida .precoBebida').innerHTML = valorBebida.toFixed(2).replace('.', ',');
+  overlay.querySelector('.sobremesa .precoSobremesa').innerHTML = valorSobremesa.toFixed(2).replace('.', ',');
+  overlay.querySelector('.total .precoTotal').innerHTML = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+  aparecerOverlay();
+}
+
+
 
 function checkPrato(prato) {
   botaoSelecionadoAnteriormente('.pratos');
@@ -55,12 +77,19 @@ function checkSobremesa(sobremesa) {
   conferirPedidoCompleto()
 }
 
-function pedidoCompleto(pedido) {
+function pedidoCompleto() {
   if (nomePrato && nomeBebida && nomeSobremesa) {
-    let total = valorPrato + valorBebida + valorSobremesa;
-    let mensagem = `Olá, gostaria de fazer o pedido:\n- Prato: ${nomePrato}\n- Bebida: ${nomeBebida}\n- Sobremesa: ${nomeSobremesa}\nTotal: R$ ${total.toFixed(2)}`;
-    let linkWhatsApp = `https://wa.me/5531999999999?text=${encodeURIComponent(mensagem)}`;
-
-    window.location.href = linkWhatsApp;
+    total = valorPrato + valorBebida + valorSobremesa;
+    valoresOverlay();
   }
+}
+
+function finalizarPedido() {
+    let mensagem = `Olá, gostaria de fazer o pedido:\n- Prato: ${nomePrato}\n- Bebida: ${nomeBebida}\n- Sobremesa: ${nomeSobremesa}\nTotal: R$ ${total.toFixed(2).toString().replace('.', ',')}`;
+    let linkWhatsApp = `https://wa.me/5531999999999?text=${encodeURIComponent(mensagem)}`;
+    window.location.href = linkWhatsApp;
+}
+
+function cancelarPedido() {
+  aparecerOverlay();
 }

@@ -160,7 +160,7 @@ footer {
 }
 
 .overlay.escondido {
-  /* display: none; */
+  display: none;
 }
 
 .overlay .confirmarPedido {
@@ -196,6 +196,13 @@ footer {
 .overlay .confirmarPedido .listaPedido .prato, .bebida, .sobremesa, .total {
   display: flex;
   justify-content: space-between;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.overlay .confirmarPedido .listaPedido .total {
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .overlay .confirmarPedido .botaoFinal {
